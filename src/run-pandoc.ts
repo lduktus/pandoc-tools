@@ -111,7 +111,7 @@ async function parse_path(path) {
 		if (path.match('/\$\!\"/')) {
 			throw new Error("Can't handle paths with quotes in them.")
 		}
-		const command = `pandoc -t json "${path}" -f docx`;
+		const command = `pandoc -d default -t json "${path}" -f docx`;
 		const { stdout } = await exec(command);
 		return collapse_spaces(JSON.parse(stdout));
 	
