@@ -18,7 +18,7 @@ export async function convert(document, formatFrom, formatTo) {
     Transform pandoc-json formatted json to HTML by piping it through the
     */
     return new Promise((resolve, reject) => {
-        const child = raw_exec(`pandoc -f ${formatFrom} -t ${formatTo}`);
+        const child = raw_exec(`pandoc -d default -f ${formatFrom} -t ${formatTo}`);
         child.stdin?.write((document) + '\n');
         child.stdin?.end();
         let response = '';
